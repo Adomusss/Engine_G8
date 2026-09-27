@@ -268,6 +268,7 @@ int main()
     const float SPEED = 100.0f;
 
     bool isRunning = true;
+	bool ConfigureSceneWindow = true;
     FrameBufferObject frameBufferObject;
     CreateFBO(SCREEN_WIDTH, SCREEN_HEIGHT, frameBufferObject, false);
     ImVec2 sceneWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -432,6 +433,19 @@ int main()
 
         // FRAME CONTROL
         // [...]
+
+        //Config Window
+        if (ConfigureSceneWindow) {
+			ImGui::Begin("Configs Window", &ConfigureSceneWindow);
+
+            if (ImGui::CollapsingHeader("Header")) {
+                                ImGui::Text("Testing, Attention Please");
+								ImGui::Checkbox("Demo Window", &ConfigureSceneWindow);
+								ImGui::Text("Scene Window Size: %.1f x %.1f", sceneWindowSize.x, sceneWindowSize.y);
+
+								//ImGui::SliderFloat("FPS", &crear variable fps, 30.0f, 500.0f);
+            }
+        }
     }
 
     // Delete VAO, VBO and shader program
